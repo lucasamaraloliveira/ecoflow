@@ -34,11 +34,34 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
     { name: 'Blog', href: '/blog' },
   ];
 
+  const isInternalPage = !isHomePage;
+  const useWhiteText = (isInternalPage && !isScrolled);
+
+  const linkColorClass = isScrolled
+    ? 'text-slate-600 dark:text-slate-300 hover:text-yellow-600 dark:hover:text-yellow-400'
+    : useWhiteText
+      ? 'text-white/90 hover:text-white'
+      : 'text-slate-600 dark:text-slate-300 hover:text-yellow-600 dark:hover:text-yellow-400';
+
+  const brandColorClass = isScrolled
+    ? 'text-slate-800 dark:text-white'
+    : useWhiteText
+      ? 'text-white'
+      : 'text-slate-800 dark:text-white';
+
+  const themeBtnClass = isScrolled
+    ? 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+    : useWhiteText
+      ? 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700';
+
   return (
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 transition-all duration-300 rounded-2xl ${isScrolled
         ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg py-3 border border-slate-200/50 dark:border-slate-700/50'
-        : 'bg-transparent py-5'
+        : isInternalPage
+          ? 'bg-black/10 backdrop-blur-sm py-5 border border-white/10'
+          : 'bg-transparent py-5'
         }`}
     >
       <div className="px-6 flex items-center justify-between">
@@ -46,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
           <div className="bg-yellow-400 p-1.5 rounded-lg shadow-sm group-hover:rotate-12 transition-transform">
             <Sun className="w-6 h-6 text-slate-900" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-slate-800 dark:text-white transition-colors">EcoFlow</span>
+          <span className={`text-xl font-bold tracking-tight transition-colors ${brandColorClass}`}>EcoFlow</span>
         </Link>
 
         {/* Desktop Links */}
@@ -56,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
+                className={`text-sm font-medium transition-colors ${linkColorClass}`}
               >
                 {link.name}
               </a>
@@ -64,18 +87,18 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
+                className={`text-sm font-medium transition-colors ${linkColorClass}`}
               >
                 {link.name}
               </Link>
             )
           ))}
 
-          <div className="h-6 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2"></div>
+          <div className={`h-6 w-[1px] mx-2 ${isScrolled ? 'bg-slate-200 dark:bg-slate-700' : useWhiteText ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}></div>
 
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
+            className={`p-2 rounded-xl transition-all ${themeBtnClass}`}
             aria-label="Alternar tema"
           >
             {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -89,7 +112,10 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
                 el?.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="bg-slate-900 dark:bg-yellow-400 text-white dark:text-slate-900 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-slate-800 dark:hover:bg-yellow-500 transition-all shadow-md active:scale-95"
+            className={`${isScrolled || !useWhiteText
+              ? 'bg-slate-900 dark:bg-yellow-400 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-yellow-500'
+              : 'bg-white text-slate-900 hover:bg-yellow-400'
+              } px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-md active:scale-95`}
           >
             Começar Agora
           </Link>
@@ -99,12 +125,12 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+            className={`p-2 rounded-xl ${themeBtnClass}`}
           >
             {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
           <button
-            className="text-slate-700 dark:text-slate-200"
+            className={isScrolled ? 'text-slate-700 dark:text-slate-200' : useWhiteText ? 'text-white' : 'text-slate-700 dark:text-slate-200'}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X /> : <Menu />}
