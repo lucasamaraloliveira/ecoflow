@@ -24,7 +24,7 @@ const projects = [
         location: 'Goiânia, GO',
         savings: '70%',
         system: '120 kWp',
-        image: 'https://images.unsplash.com/photo-1508514177221-188b191fb4e7?q=80&w=600&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=800&auto=format&fit=crop',
         tags: ['Condomínio', 'Goiás'],
     },
     {
@@ -32,7 +32,7 @@ const projects = [
         location: 'Uberlândia, MG',
         savings: '85%',
         system: '25 kWp',
-        image: 'https://images.unsplash.com/photo-1594488311394-4d89a992892b?q=80&w=600&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop',
         tags: ['Rural', 'Minas Gerais'],
     },
     {
