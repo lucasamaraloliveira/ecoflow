@@ -72,9 +72,9 @@ const HelpCenterPage: React.FC = () => {
                 {/* Quick Contact Options */}
                 <div className="grid md:grid-cols-3 gap-6 mb-16">
                     {[
-                        { icon: <MessageCircle className="w-6 h-6" />, title: 'Chat Online', desc: 'Fale conosco em tempo real', action: 'Iniciar Chat' },
-                        { icon: <Phone className="w-6 h-6" />, title: 'Telefone', desc: '(11) 98765-4321', action: 'Ligar Agora' },
-                        { icon: <Mail className="w-6 h-6" />, title: 'E-mail', desc: 'suporte@ecoflow.com.br', action: 'Enviar E-mail' },
+                        { icon: <MessageCircle className="w-6 h-6" />, title: 'Chat Online', desc: 'Fale conosco em tempo real', action: 'Iniciar Chat', href: 'https://wa.me/5511987654321' },
+                        { icon: <Phone className="w-6 h-6" />, title: 'Telefone', desc: '(11) 98765-4321', action: 'Ligar Agora', href: 'tel:+5511987654321' },
+                        { icon: <Mail className="w-6 h-6" />, title: 'E-mail', desc: 'suporte@ecoflow.com.br', action: 'Enviar E-mail', href: 'mailto:suporte@ecoflow.com.br' },
                     ].map((item, idx) => (
                         <div key={idx} className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-100 dark:border-slate-800 hover:shadow-lg transition-all flex items-center gap-4">
                             <div className="w-14 h-14 bg-cyan-100 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -84,9 +84,14 @@ const HelpCenterPage: React.FC = () => {
                                 <h3 className="font-bold text-slate-900 dark:text-white">{item.title}</h3>
                                 <p className="text-sm text-slate-500 dark:text-slate-400">{item.desc}</p>
                             </div>
-                            <button className="text-cyan-500 font-semibold text-sm hover:text-cyan-600 transition-colors whitespace-nowrap">
+                            <a
+                                href={item.href}
+                                target={item.href.startsWith('http') ? '_blank' : undefined}
+                                rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                className="text-cyan-500 font-semibold text-sm hover:text-cyan-600 transition-colors whitespace-nowrap"
+                            >
                                 {item.action}
-                            </button>
+                            </a>
                         </div>
                     ))}
                 </div>
