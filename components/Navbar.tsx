@@ -26,25 +26,19 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  const navLinks = isHomePage
-    ? [
-      { name: 'Início', href: '#inicio' },
-      { name: 'Benefícios', href: '#beneficios' },
-      { name: 'Sobre', href: '#sobre' },
-      { name: 'Contato', href: '#contato' },
-    ]
-    : [
-      { name: 'Início', href: '/' },
-      { name: 'Sobre', href: '/sobre' },
-      { name: 'Equipe', href: '/equipe' },
-      { name: 'Blog', href: '/blog' },
-    ];
+  const navLinks = [
+    { name: 'Início', href: isHomePage ? '#inicio' : '/' },
+    { name: 'Benefícios', href: isHomePage ? '#beneficios' : '/#beneficios' },
+    { name: 'Sobre', href: '/sobre' },
+    { name: 'Equipe', href: '/equipe' },
+    { name: 'Blog', href: '/blog' },
+  ];
 
   return (
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 transition-all duration-300 rounded-2xl ${isScrolled
-          ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg py-3 border border-slate-200/50 dark:border-slate-700/50'
-          : 'bg-transparent py-5'
+        ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg py-3 border border-slate-200/50 dark:border-slate-700/50'
+        : 'bg-transparent py-5'
         }`}
     >
       <div className="px-6 flex items-center justify-between">
@@ -88,7 +82,13 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
           </button>
 
           <Link
-            to="/#contato"
+            to={isHomePage ? '#contato' : '/#contato'}
+            onClick={() => {
+              if (isHomePage) {
+                const el = document.getElementById('contato');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             className="bg-slate-900 dark:bg-yellow-400 text-white dark:text-slate-900 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-slate-800 dark:hover:bg-yellow-500 transition-all shadow-md active:scale-95"
           >
             Começar Agora
@@ -138,8 +138,14 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
               )
             ))}
             <Link
-              to="/#contato"
-              onClick={() => setMobileMenuOpen(false)}
+              to={isHomePage ? '#contato' : '/#contato'}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (isHomePage) {
+                  const el = document.getElementById('contato');
+                  el?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="bg-yellow-400 text-slate-900 w-full py-3 rounded-xl font-bold"
             >
               Solicitar Orçamento

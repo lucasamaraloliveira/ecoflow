@@ -6,3 +6,4 @@ export { default as HelpCenterPage } from './HelpCenterPage';
 export { default as PrivacyPage } from './PrivacyPage';
 export { default as TermsPage } from './TermsPage';
 export { default as WarrantyPage } from './WarrantyPage';
+export { default as ProjectsPage } from './ProjectsPage';
