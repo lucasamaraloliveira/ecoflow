@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Sun, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -8,26 +8,26 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1 space-y-6">
-            <div className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <div className="bg-yellow-400 p-1.5 rounded-lg">
                 <Sun className="w-6 h-6 text-slate-900" />
               </div>
               <span className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">EcoFlow</span>
-            </div>
+            </Link>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
               Líder em soluções de energia renovável, ajudando você a economizar e salvar o planeta simultaneamente.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="p-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 hover:text-yellow-500 transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 hover:text-yellow-500 transition-colors">
                 <Instagram className="w-5 h-5 dark:text-white" />
               </a>
-              <a href="#" className="p-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 hover:text-yellow-500 transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 hover:text-yellow-500 transition-colors">
                 <Facebook className="w-5 h-5 dark:text-white" />
               </a>
-              <a href="#" className="p-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 hover:text-yellow-500 transition-colors">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 hover:text-yellow-500 transition-colors">
                 <Twitter className="w-5 h-5 dark:text-white" />
               </a>
-              <a href="#" className="p-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 hover:text-yellow-500 transition-colors">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-100 dark:border-slate-800 hover:text-yellow-500 transition-colors">
                 <Linkedin className="w-5 h-5 dark:text-white" />
               </a>
             </div>
@@ -36,20 +36,20 @@ const Footer: React.FC = () => {
           <div>
             <h5 className="font-bold text-slate-900 dark:text-white mb-6">Empresa</h5>
             <ul className="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
-              <li><a href="#" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Sobre Nós</a></li>
-              <li><a href="#" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Nossa Equipe</a></li>
-              <li><a href="#" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Carreiras</a></li>
-              <li><a href="#" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Blog</a></li>
+              <li><Link to="/sobre" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Sobre Nós</Link></li>
+              <li><Link to="/equipe" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Nossa Equipe</Link></li>
+              <li><Link to="/carreiras" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Carreiras</Link></li>
+              <li><Link to="/blog" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Blog</Link></li>
             </ul>
           </div>
 
           <div>
             <h5 className="font-bold text-slate-900 dark:text-white mb-6">Suporte</h5>
             <ul className="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
-              <li><a href="#" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Central de Ajuda</a></li>
-              <li><a href="#" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Privacidade</a></li>
-              <li><a href="#" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Termos de Uso</a></li>
-              <li><a href="#" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Garantia</a></li>
+              <li><Link to="/ajuda" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Central de Ajuda</Link></li>
+              <li><Link to="/privacidade" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Privacidade</Link></li>
+              <li><Link to="/termos" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Termos de Uso</Link></li>
+              <li><Link to="/garantia" className="hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">Garantia</Link></li>
             </ul>
           </div>
 

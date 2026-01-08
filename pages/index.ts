@@ -1,0 +1,8 @@
+export { default as AboutPage } from './AboutPage';
+export { default as TeamPage } from './TeamPage';
+export { default as CareersPage } from './CareersPage';
+export { default as BlogPage } from './BlogPage';
+export { default as HelpCenterPage } from './HelpCenterPage';
+export { default as PrivacyPage } from './PrivacyPage';
+export { default as TermsPage } from './TermsPage';
+export { default as WarrantyPage } from './WarrantyPage';
